@@ -11,8 +11,11 @@ app.set("view engine", "ejs");
 app.post("/test", (req, res) => {
   res.send(req.body);
 });
-app.use((req, res) => {
+app.get("/", (req, res) => {
   res.render("index.ejs");
+});
+app.use((req, res) => {
+  res.status(404).render("404.ejs");
 });
 
 app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
