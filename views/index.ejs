@@ -9,13 +9,15 @@
 </head>
 
 <body>
-    <form action="/test" method="post">
-        <input type="text" name="first" id="first"><label for="first">first</label><br>
-        <input type="text" name="second" id="second"><label for="second">second</label><br>
-        <input type="text" name="third" id="third"><label for="third">thisd</label><br>
-        <input type="text" name="fourth" id="fourth"><label for="fourth">fourth</label><br>
-        <button type="submit">submit</button>
-    </form>
+    <div class="container">
+        <form id="contact" action="/test" method="post">
+            <input type="text" name="name" id="name" placeholder="Name"><br>
+            <input type="text" name="address" id="address" placeholder="Address"><br>
+            <input type="text" name="idea" id="idea" placeholder="Ideas"><br>
+            <textarea name="freeText" id="freeText" rows="10" placeholder="Free Text Area"></textarea>
+            <button type="submit">submit</button>
+        </form>
+    </div>
     <script src="/public/script/script.js"></script>
 </body>
 
