@@ -11,6 +11,8 @@
 <body>
     <div class="container">
         <form id="contact" action="/test" method="post">
+            <input type="hidden" name="id" value="<%if(typeof id !="undefined"){%><%=id%><%}%>">
+            <input type="hidden" id="clickTime" name="clickTime" value=''>
             <input type="text" name="name" id="name" placeholder="Name"><br>
             <input type="text" name="address" id="address" placeholder="Address"><br>
             <input type="text" name="idea" id="idea" placeholder="Ideas"><br>
