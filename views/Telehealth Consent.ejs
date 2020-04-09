@@ -1,27 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/style/style.css">
-    <title>Document</title>
-</head>
-
-<body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/public/images/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" href="/public/style/app.css" />
+    <title>Granger Medical</title>
+  </head>
+  <body>
+    <img
+      src="/public/images/granger-logo2.jpg"
+      alt="Granger Medical"
+      width="300"
+      height="150"
+      class="center"
+    />
     <div class="container">
-        <form id="contact" action="/submit" method="post">
-            <input type="hidden" name="id" value="<%if(typeof id !="undefined"){%><%=id%><%}%>">
-            <!-- <input type="hidden" id="clickTime" name="clickTime" value=''> -->
-            <input type="hidden" name="formID",id="formID" value='1'>
-            <input type="text" name="name" id="name" placeholder="Name"><br>
-            <input type="text" name="address" id="address" placeholder="Address"><br>
-            <input type="text" name="idea" id="idea" placeholder="Ideas"><br>
-            <textarea name="freeText" id="freeText" rows="10" placeholder="Free Text Area"></textarea>
-            <button type="submit">submit</button>
-        </form>
+      <h1>Tellahealth Agreement Form</h1>
+      <p class="agreement">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo
+        necessitatibus laborum doloribus fugiat inventore quisquam, quibusdam
+        debitis pariatur velit ea praesentium facilis soluta animi, vitae
+        molestias. Omnis blanditiis ipsam eaque inventore accusantium totam
+        laboriosam sapiente, perferendis necessitatibus, officia delectus, natus
+        alias praesentium commodi quas asperiores maxime mollitia sunt. Impedit
+        dolorum deleniti sint expedita delectus quasi nulla, amet mollitia
+        debitis corporis similique voluptatem nisi quis! Consequuntur animi,
+        sequi perspiciatis laborum praesentium quia fuga voluptatibus possimus
+        quaerat vitae saepe vel expedita corporis quos molestiae sit quasi
+        veniam maxime aperiam! Cupiditate maiores nihil, eveniet temporibus vero
+        ducimus a officiis est quia deserunt alias sit quidem facilis atque
+        nulla? Sunt veritatis fuga maxime doloribus atque minima velit, unde
+        omnis natus dolorem dicta ratione reiciendis optio incidunt libero
+        voluptates nihil eos recusandae totam ipsam? Eveniet quos vero assumenda
+        illum iste impedit ducimus? Error distinctio dolorem atque, rerum
+        cupiditate ut iure voluptates quisquam illo eaque sit natus harum illum
+        laudantium ratione fugit fugiat expedita consequatur magni accusantium
+        ducimus odio tempora. Voluptas voluptates maiores aliquam, quidem, ipsum
+        nihil consequatur accusamus perferendis ratione eligendi, repudiandae
+        possimus ea amet nisi accusantium nobis. Alias nostrum sed ipsa ipsam
+        inventore amet ea maiores a perspiciatis asperiores at expedita
+        blanditiis officiis, totam accusantium ipsum ab fuga aperiam repellendus
+        doloremque fugit ex magnam! Sed corrupti accusamus laboriosam iusto
+        quia, ab perferendis deserunt quae neque nisi exercitationem
+        voluptatibus voluptate itaque est laborum cum, voluptatem adipisci
+        beatae iure maiores, consectetur vitae impedit. Quos hic voluptas
+        voluptatum repudiandae, eum beatae iste doloribus perferendis placeat.
+        Omnis accusantium tempore, iure magnam officia iusto beatae sequi
+        maiores vero delectus eveniet aliquam explicabo, veritatis ut? Deleniti
+        quasi inventore alias, voluptas cumque eius vel explicabo, praesentium
+        tenetur distinctio doloremque voluptates fugit placeat assumenda, minus
+        ratione dolorum dolore ipsam? Fuga aliquid quod dignissimos laborum,
+        numquam aut repellendus, nostrum unde quis vero facilis?
+      </p>
+      <form id="contact" action="/submit" method="post">
+        <input type="hidden" name="id" value="<%if(typeof id
+        !="undefined"){%><%=id%><%}%>">
+        <input type="hidden" name="formID" ,id="formID" value="1" />
+        <input type="checkbox" required id="agree" name="agree" value="Agree" />
+        I Accept the Terms and Conditions<br />
+        <input class="button" type="submit" />
+      </form>
     </div>
     <script src="/public/script/script.js"></script>
-</body>
+  </body>
 
+  <footer></footer>
 </html>
