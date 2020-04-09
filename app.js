@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const {
-  // createToken,
+  createToken,
   isActive,
   getFormName,
   // getFormList,
@@ -65,6 +65,11 @@ app.get("/id::id", (req, res) => {
       res.render("something went wrong.ejs");
       console.log(err);
     });
+});
+app.get("/create", (req, res) => {
+  createToken(APIKey, 1).then((result) => {
+    res.render("link.ejs", { result });
+  });
 });
 app.use((req, res) => {
   res.status(404).render("404.ejs");
