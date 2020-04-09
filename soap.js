@@ -147,7 +147,6 @@ const getFormList = async (APIKey) => {
 }
 const saveResponse = async (APIKey, formID, token, data) => {
     const saveResponseXML = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/"><soapenv:Header/><soapenv:Body><tem:SaveResponse><tem:APIKey>${APIKey}</tem:APIKey><tem:token>${token}</tem:token><tem:FormID>${formID}</tem:FormID><tem:Value>${data}</tem:Value></tem:SaveResponse></soapenv:Body></soapenv:Envelope>`
-    console.log(saveResponseXML)
     const header = rawHeader
     header.soapAction = 'http://tempuri.org/SaveResponse'
     let sendResponse = ''

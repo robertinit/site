@@ -28,9 +28,7 @@ app.post("/submit", (req, res) => {
   delete req.body.id
   delete req.body.formID
   data = JSON.stringify(req.body)
-  console.log(data)
   saveResponse(APIKey, formID, id, `${data}`).then(e => {
-    console.log(e)
     if (e == 'true') {
       res.render('thanks.ejs')
     } else {
@@ -55,7 +53,6 @@ app.get("/id::id", (req, res) => {
         })
       })
     } else {
-      console.log(answer)
       res.render('404.ejs')
     }
   })
