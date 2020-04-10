@@ -1,4 +1,8 @@
+require("dotenv").config();
 const express = require("express");
+const fs = require("fs");
+const https = require("https");
+const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
 const {
@@ -9,6 +13,8 @@ const {
   saveResponse,
   getFormID,
 } = require("./soap");
+const SECURE_PORT = process.env.SECURE_PORT;
+const status = process.env.STATUS;
 const PORT = process.env.PORT;
 const APIKey = process.env.APIKEY;
 //middleware
@@ -74,5 +80,19 @@ app.get("/create", (req, res) => {
 app.use((req, res) => {
   res.status(404).render("404.ejs");
 });
-
-app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
+if (status == "prod") {
+  https
+    .createServer(
+      {
+        key: fs.readFileSync(SSL_KEY),
+        cert: fs.readFileSync(SSL_CERT),
+        ca: fs.readFileSync(SSL_CA),
+      },
+      app
+    )
+    .listen(SECURE_PORT, () =>
+      console.log(`listening on port: ${SECURE_PORT}`)
+    );
+} else if (status == "dev") {
+  app.listen(PORT, console.log(`listening on port: ${PORT}`));
+}
