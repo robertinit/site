@@ -13,10 +13,16 @@ const {
   saveResponse,
   getFormID,
 } = require("./soap");
-const SECURE_PORT = process.env.SECURE_PORT;
-const status = process.env.STATUS;
-const PORT = process.env.PORT;
-const APIKey = process.env.APIKEY;
+const {
+  APIKEY,
+  PORT,
+  STATUS,
+  SECURE_PORT,
+  SSL_KEY,
+  SSL_CERT,
+  SSL_CA,
+} = process.env;
+
 //middleware
 app.use(
   bodyParser.urlencoded({
@@ -33,7 +39,7 @@ app.post("/submit", (req, res) => {
   delete req.body.id;
   delete req.body.formID;
   data = JSON.stringify(req.body);
-  saveResponse(APIKey, formID, id, `${data}`)
+  saveResponse(APIKEY, formID, id, `${data}`)
     .then((e) => {
       if (e == "true") {
         res.render("thanks.ejs");
@@ -48,11 +54,11 @@ app.post("/submit", (req, res) => {
 });
 app.get("/id::id", (req, res) => {
   const { id } = req.params;
-  isActive(APIKey, id)
+  isActive(APIKEY, id)
     .then((answer) => {
       if (answer == "true") {
-        getFormID(APIKey, id).then((form) => {
-          getFormName(APIKey, form)
+        getFormID(APIKEY, id).then((form) => {
+          getFormName(APIKEY, form)
             .then((ejs) => {
               res.render(`${ejs}.ejs`, {
                 id,
@@ -73,14 +79,14 @@ app.get("/id::id", (req, res) => {
     });
 });
 app.get("/create", (req, res) => {
-  createToken(APIKey, 1).then((result) => {
+  createToken(APIKEY, 1).then((result) => {
     res.render("link.ejs", { result });
   });
 });
 app.use((req, res) => {
   res.status(404).render("404.ejs");
 });
-if (status == "prod") {
+if (STATUS == "prod") {
   https
     .createServer(
       {
@@ -93,6 +99,6 @@ if (status == "prod") {
     .listen(SECURE_PORT, () =>
       console.log(`listening on port: ${SECURE_PORT}`)
     );
-} else if (status == "dev") {
+} else if (STATUS == "dev") {
   app.listen(PORT, console.log(`listening on port: ${PORT}`));
 }
